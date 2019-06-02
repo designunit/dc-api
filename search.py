@@ -1,18 +1,19 @@
 import re
 
 # data = ["P_C_01_a", "PAV-PRD1-MAT1-2-PAT1-COL2-3-BST1", "P_K_01_a", "PAV-PRD1-MAT9-65-PAT22-65-COL5-6-7-22-BST1"]
-dataFull = ["P_C_01_a", "P_C_01_b", "P_C_02_a", "P_C_02_b", "P_C_03_a", "P_C_03_b", "P_C_04_a", "P_C_04_b", "P_C_05_a",
-            "P_C_05_b", "P_C_06_a", "P_C_06_b", "P_C_09_a", "P_C_09_b", "P_C_10_a", "P_C_10_b", "P_C_11_a", "P_C_11_b",
-            "P_C_12_a", "P_C_12_b", "P_C_13_a", "P_C_13_b", "P_C_14_a", "P_C_14_b", "P_C_15_a", "P_C_15_b", "P_C_16_a",
-            "P_C_16_b", "P_C_20_a", "P_C_20_b", "P_C_21_a", "P_C_21_b", "P_C_22_a", "P_C_22_b", "P_C_23_a", "P_C_23_b",
-            "P_C_24_a", "P_C_24_b", "P_C_25_a", "P_C_25_b", "P_C_26_a", "P_C_26_b", "P_C_27_a", "P_C_27_b", "P_C_28_a",
-            "P_C_28_b", "P_C_29_a", "P_C_29_b", "P_C_30_a", "P_C_30_b", "P_C_31_a", "P_C_31_b", "P_C_32_a", "P_C_32_b",
-            "P_D_01", "P_G_01_a", "P_G_01_b", "P_G_02_a", "P_G_02_b", "P_K_01_a", "P_K_01_b", "P_K_02_a", "P_K_02_b",
-            "P_K_03_a", "P_K_03_b", "P_K_04_a", "P_K_04_b", "P_K_05_a", "P_K_05_b", "P_K_06_a", "P_K_06_b", "P_M_01_a",
-            "P_M_01_b", "P_M_03_a", "P_M_04_a", "P_M_04_b", "P_M_05_a", "P_R_01_a", "P_R_01_b", "P_R_02_a", "P_R_02_b",
-            "P_R_03_a", "P_R_03_b", "P_R_04_a", "P_R_04_b", "P_R_05_a", "P_R_05_b", "P_R_06_a", "P_R_06_b", "P_R_07_a",
-            "P_R_07_b", "P_S_01_a", "P_S_01_b", "P_S_02_a", "P_S_02_b", "P_S_03_a", "P_S_03_b", "P_S_04_a", "P_S_04_b",
-            "P_W_01_a", "P_W_01_b", "P_W_02_a", "P_W_02_b", "P_W_03_a", "P_W_03_b", "P_W_04_a", "P_W_04_b",
+dataFull = [
+            # "P_C_01_a", "P_C_01_b", "P_C_02_a", "P_C_02_b", "P_C_03_a", "P_C_03_b", "P_C_04_a", "P_C_04_b", "P_C_05_a",
+            # "P_C_05_b", "P_C_06_a", "P_C_06_b", "P_C_09_a", "P_C_09_b", "P_C_10_a", "P_C_10_b", "P_C_11_a", "P_C_11_b",
+            # "P_C_12_a", "P_C_12_b", "P_C_13_a", "P_C_13_b", "P_C_14_a", "P_C_14_b", "P_C_15_a", "P_C_15_b", "P_C_16_a",
+            # "P_C_16_b", "P_C_20_a", "P_C_20_b", "P_C_21_a", "P_C_21_b", "P_C_22_a", "P_C_22_b", "P_C_23_a", "P_C_23_b",
+            # "P_C_24_a", "P_C_24_b", "P_C_25_a", "P_C_25_b", "P_C_26_a", "P_C_26_b", "P_C_27_a", "P_C_27_b", "P_C_28_a",
+            # "P_C_28_b", "P_C_29_a", "P_C_29_b", "P_C_30_a", "P_C_30_b", "P_C_31_a", "P_C_31_b", "P_C_32_a", "P_C_32_b",
+            # "P_D_01", "P_G_01_a", "P_G_01_b", "P_G_02_a", "P_G_02_b", "P_K_01_a", "P_K_01_b", "P_K_02_a", "P_K_02_b",
+            # "P_K_03_a", "P_K_03_b", "P_K_04_a", "P_K_04_b", "P_K_05_a", "P_K_05_b", "P_K_06_a", "P_K_06_b", "P_M_01_a",
+            # "P_M_01_b", "P_M_03_a", "P_M_04_a", "P_M_04_b", "P_M_05_a", "P_R_01_a", "P_R_01_b", "P_R_02_a", "P_R_02_b",
+            # "P_R_03_a", "P_R_03_b", "P_R_04_a", "P_R_04_b", "P_R_05_a", "P_R_05_b", "P_R_06_a", "P_R_06_b", "P_R_07_a",
+            # "P_R_07_b", "P_S_01_a", "P_S_01_b", "P_S_02_a", "P_S_02_b", "P_S_03_a", "P_S_03_b", "P_S_04_a", "P_S_04_b",
+            # "P_W_01_a", "P_W_01_b", "P_W_02_a", "P_W_02_b", "P_W_03_a", "P_W_03_b", "P_W_04_a", "P_W_04_b",
             "PAV-PRD1-MAT1-2-PAT1-COL2-BST1", "PAV-PRD1-MAT1-2-PAT1-COL2-BST2", "PAV-PRD1-MAT1-5-PAT1-COL2-BST1",
             "PAV-PRD1-MAT1-5-PAT1-COL2-BST2", "PAV-PRD1-MAT1-4-PAT1-COL1-BST1", "PAV-PRD1-MAT1-4-PAT1-COL1-BST2",
             "PAV-PRD1-MAT1-5-PAT1-COL2-BST1", "PAV-PRD1-MAT1-5-PAT1-COL2-BST2", "PAV-PRD1-MAT1-PAT2-COL2-BST1",
@@ -48,58 +49,75 @@ dataFull = ["P_C_01_a", "P_C_01_b", "P_C_02_a", "P_C_02_b", "P_C_03_a", "P_C_03_
             "PAV-PRD1-MAT7-5-COL10-3-BST1", "PAV-PRD1-MAT7-5-COL10-3-BST2", "PAV-PRD1-MAT7-12-COL10-1-BST1",
             "PAV-PRD1-MAT7-12-COL10-1-BST2", "PAV-PRD1-MAT7-5-COL9-3-BST1", "PAV-PRD1-MAT7-5-COL9-3-BST2",
             "PAV-PRD1-MAT7-12-COL9-1-BST1", "PAV-PRD1-MAT7-12-COL9-1-BST2"]
-print(len(dataFull))
 
 
-def divideTags(x):
-    list = []
+def get_tag(tag):
+    search_tag = re.search(r'^([a-zA-Z]+)?(\d+)?$',tag)
+    return search_tag.group(1,2)
+
+
+def get_code(code):
+    parts = code.split('-')
+    result = []
+    previous_tag = None
+    for part in parts:
+        tag = get_tag(part)
+        if is_alone(tag):
+            tag = (previous_tag[0], tag[1])
+        result.append(tag)
+        previous_tag = tag
+    return result
+
+
+def divide_tags(x):
+    result = []
     for i in x:
         a = i.split('-')
-        list.append(a)
-    return (list)
+        result.append(a)
+    return result
 
 
-def flattenList(x):
-    flatList = []
+def flat(x):
+    flat_list = []
     for sublist in x:
         for i in sublist:
-            flatList.append(i)
-    return flatList
+            flat_list.append(i)
+    return flat_list
 
 
-def findAlone(x):
-    if len(x) <= 2:  # тут надо переписать
-        return (x)
+def is_alone(x):
+    prefix, n = x
+    return not prefix
 
 
-def clearDigits(x):
-    noDigits = []
+def clear_digits(x):
+    no_digits = []
     for i in x:
         if not i.isdigit():
-            noDigits.append(i)
-    return (''.join(noDigits))
+            no_digits.append(i)
+    return (''.join(no_digits))
 
 
-def addPrevTag(x):
+def add_previous_tag(x):
     for i in x:
-        if findAlone(i):
-            tag = clearDigits(x[x.index(findAlone(i)) - 1])
-            y = tag + findAlone(i)
-            return (y)
+        if is_alone(i):
+            tag = clear_digits(x[x.index(is_alone(i)) - 1])
+            y = tag + is_alone(i)
+            return y
 
 
-def replaceAlone(x):
+def replace_alone(x):
     for n, i in enumerate(x):
-        if findAlone(i):
-            x[n] = addPrevTag(x)
+        if is_alone(i):
+            x[n] = add_previous_tag(x)
     return x
 
 
-dataDivided = flattenList(divideTags(dataFull))
+if __name__ == '__main__':
+    for i in dataFull:
+        print(i)
+        print(get_code(i))
 
-listSorted = sorted(list(set(replaceAlone(dataDivided))))
-print(listSorted)
-print(len(listSorted))
 # for x in data:
 #     print(x.partition('_'))
 #
@@ -110,8 +128,3 @@ print(len(listSorted))
 # def get_tags(items):
 #
 #     return []
-
-
-# if __name__ == '__main__':
-#     print(search([], [])
-#     print(get_tags([])
