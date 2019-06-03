@@ -49,20 +49,12 @@ def get_tag_set(code):
     return result
 
 
-def flat(full_list):
-    flat_list = []
-    for sublist in full_list:
-        for i in sublist:
-            flat_list.append(i)
-    return flat_list
-
-
 if __name__ == '__main__':
     import requests
     res = requests.get('https://raw.githubusercontent.com/designunit/dc-data/master/data.json')
     data = res.json()
     codes = [get_item_search_tags(x) for x in data]
-    tags = set(sorted(flat(codes)))
+    tags = set(sorted(sum(codes, [])))
 
     for x in tags:
         print(x)
