@@ -54,7 +54,7 @@ if __name__ == '__main__':
     res = requests.get('https://raw.githubusercontent.com/designunit/dc-data/master/data.json')
     data = res.json()
     codes = [get_item_search_tags(x) for x in data]
-    tags = set(sorted(sum(codes, [])))
+    tags = sorted(set(sum(codes, [])))
 
     for x in tags:
         print(x)
