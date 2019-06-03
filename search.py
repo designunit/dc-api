@@ -32,12 +32,7 @@ def get_item_search_tags(item):
             title.remove(tag)
     title = set(title)
     code = get_tag_set(get_code(item['code']))
-    all_tags_unsorted = {alias} | title | code
-    all_tags_lowercase = []
-    for item in all_tags_unsorted:
-        item_lower = item.lower()
-        all_tags_lowercase.append(item_lower)
-    return all_tags_lowercase
+    return {alias} | title | code
 
 
 def get_tag_set(code):
@@ -53,7 +48,7 @@ if __name__ == '__main__':
     import requests
     res = requests.get('https://raw.githubusercontent.com/designunit/dc-data/master/data.json')
     data = res.json()
-    codes = [get_item_search_tags(x) for x in data]
+    codes = [list(get_item_search_tags(x)) for x in data]
     tags = sorted(set(sum(codes, [])))
 
     for x in tags:
