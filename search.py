@@ -14,7 +14,7 @@ def is_alone(x):
 def get_code(code):
     parts = code.split('-')
     result = []
-    previous_tag = None
+    previous_tag = (None, None)
     for part in parts:
         tag = get_tag(part)
         if is_alone(tag):
@@ -24,13 +24,13 @@ def get_code(code):
     return result
 
 
+def item_title_to_search_tags_set(title):
+    return set([x.strip().lower() for x in title.split(' ') if len(x) > 3])
+
+
 def get_item_search_tags(item):
     alias = item['alias']
-    title = item['title'].split(' ')
-    for tag in title:
-        if len(tag) < 4:
-            title.remove(tag)
-    title = set(title)
+    title = item_title_to_search_tags_set(item['title'])
     code = get_tag_set(get_code(item['code']))
     return {alias} | title | code
 
